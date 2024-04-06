@@ -4,9 +4,16 @@ cmake_minimum_required(VERSION 3.13)
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
 
-project(my_project)
+include(pico_extras_import_optional.cmake)
 
-# initialize the Raspberry Pi Pico SDK
+
+include("cmake/usb/cmake_install.cmake")
+
+project(my_project C CXX ASM )
+set(CMAKE_C_STANDARD 11)
+set(CMAKE_CXX_STANDARD 17)
+
+
 pico_sdk_init()
 
 add_executable(main
@@ -16,5 +23,13 @@ add_executable(main
 # Add pico_stdlib library which aggregates commonly used features
 target_link_libraries(main pico_stdlib)
 
-# create map/bin/hex/uf2 file in addition to ELF.
+
+# enable usb output, disable uart output
+pico_enable_stdio_usb(main 1)
+pico_enable_stdio_uart(main 0)
+
 pico_add_extra_outputs(main)
+
+if (TARGET tinyusb_device)
+    message(WARNING "not building hello_usb because TinyUSB submodule is not initialized in the SDK")
+endif()
