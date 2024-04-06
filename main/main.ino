@@ -1,9 +1,7 @@
-#include <ACROBOTIC_SSD1306.h>
-#include <DHT11.h>
-#include <HMC5883L.h>
 #include <HCSR04.h>
 
-int16_t temperature;
+int8_t temperature;
+int8_t humidity;
 int8_t  height;
 bool alarm;
 
@@ -17,7 +15,9 @@ void setup() {
 
 void loop() {
   // put your main code here, to run repeatedly:
-  screen(temperature, height, alarm);
-  delay(2000);
-  temperature += 100;
+  request_temperature(13);
+  delay(18);
+  get_temperature(13);
+  screen(temperature, humidity, height, alarm);
+  delay(2000-18);
 }
