@@ -3,7 +3,6 @@ cmake_minimum_required(VERSION 3.13)
 # initialize the SDK based on PICO_SDK_PATH
 # note: this must happen before project()
 include(pico_sdk_import.cmake)
-
 include(pico_extras_import_optional.cmake)
 
 
@@ -26,10 +25,16 @@ target_link_libraries(main pico_stdlib)
 
 # enable usb output, disable uart output
 pico_enable_stdio_usb(main 1)
-pico_enable_stdio_uart(main 0)
+pico_enable_stdio_uart(main 1)
 
 pico_add_extra_outputs(main)
 
-if (TARGET tinyusb_device)
-    message(WARNING "not building hello_usb because TinyUSB submodule is not initialized in the SDK")
-endif()
+# Link to pico_stdlib (gpio, time, etc. functions)
+target_link_libraries(main
+    pico_stdlib
+    hardware_i2c
+)
+
+# if (TARGET tinyusb_device)
+#     message(WARNING "not building hello_usb because TinyUSB submodule is not initialized in the SDK")
+# endif()
