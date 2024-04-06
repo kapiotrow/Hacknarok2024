@@ -1,7 +1,14 @@
 # Hacknarok2024
 
 ## Concept
-
+System used for avalanche detection, warning and direct protection. Consists of one field device and one wearable deice. 
+### Field device
+* Measures the snow cover height to predict avalanches
+* Detects the avalanche and sends a warning to the wearable device.
+### Wearable device
+* Receives avalanche warnings from the field device
+* Detects the avalanche hit and deploys airbags
+* Monitors body temperature.
 ## Architecture
 
 ## List of parts used in the project
