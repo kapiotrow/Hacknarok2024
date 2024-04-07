@@ -14,6 +14,8 @@ System used for avalanche detection, warning and direct protection. Consists of 
 ## List of parts used in the project
 ### Raspberry Pico W
 https://datasheets.raspberrypi.com/picow/pico-w-datasheet.pdf
+### Arduino Pico
+https://github.com/earlephilhower/arduino-pico
 ### Ultrasound proximity sensor HC-SR04
 Used to measure the snow cover height.\
 https://www.alldatasheet.com/datasheet-pdf/pdf/1132204/ETC2/HCSR04.html
