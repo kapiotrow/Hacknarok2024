@@ -1,6 +1,6 @@
 #include <HCSR04.h>
 
-float base_height = 200;
+float base_height = 100;
 
 UltraSonicDistanceSensor distanceSensor(11, 12);
 
