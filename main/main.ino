@@ -56,6 +56,7 @@ void setup() {
   pinMode(ROTB, INPUT);
 }
 
+int send_idx = 0;
 void loop() {
   // put your main code here, to run repeatedly:
   request_temperature(13);
@@ -68,13 +69,21 @@ void loop() {
   encoder_val = 0;
 
   if (alarm) {
-    if (!client.connect(host, port)) {
-      Serial.println("connection failed");
-      return;
+    if (client.connect(host, port)) {
+      send_avalanche_msg(client);
     }
-    send_avalanche_msg(client);
-
+    Serial.println("connection failed");
     client.stop();
+  }
+  else {
+    if (client.connect(host, port)) {
+      wifi_send(String(temperature), client);
+
+      auto str = String(int(height));
+      Serial.println(str);
+      wifi_send(str, client);
+      client.stop();
+    }
   }
   screen(temperature, humidity, height, wind_speed, alarm);
 
