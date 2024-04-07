@@ -25,7 +25,7 @@ char* wifi_send_read(const char *send_data, int length, WiFiClient &client)
     }
   }
 
-  Serial.println("receiving from remote server");
+  // Serial.println("receiving from remote server");
   int bytes_to_read = client.available(); 
 
   if (bytes_to_read > 128 - 1)
@@ -37,7 +37,7 @@ char* wifi_send_read(const char *send_data, int length, WiFiClient &client)
     // Serial.println(wifi_read_data[i]);    
   }
   // read_data[i+1] = '\0';
-  Serial.println(read_data);
+  // Serial.println(read_data);
   
   return read_data;
 }
