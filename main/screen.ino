@@ -7,7 +7,7 @@
 
 Adafruit_SSD1306 display(SCREEN_WIDTH, SCREEN_HEIGHT, &Wire, -1);
 
-void screen(int8_t temperature, int8_t humidity, int8_t height, bool alarm) {
+void screen(int8_t temperature, int8_t humidity, float height, bool alarm) {
   // SSD1306_SWITCHCAPVCC = generate display voltage from 3.3V internally
   if(!display.begin(SSD1306_SWITCHCAPVCC, 0x3C)) {
     Serial.println(F("SSD1306 allocation failed"));

@@ -4,7 +4,7 @@
 QMC5883LCompass compass;
 int8_t temperature;
 int8_t humidity;
-int8_t  height;
+float  height;
 bool alarm;
 
 void setup() {
@@ -22,6 +22,7 @@ void loop() {
   request_temperature(13);
   delay(18);
   get_temperature(13);
+  get_snow_cover_height();
   alarm = revolutions();
   screen(temperature, humidity, height, alarm);
   delay(2000-18);
