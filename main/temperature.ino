@@ -19,8 +19,6 @@ void request_temperature(int pin){
 
 void get_temperature(int pin)
 {
-  Serial.begin(9600);
-
 	digitalWrite(pin, HIGH);
 	delayMicroseconds(40);
 	pinMode(pin, INPUT);
