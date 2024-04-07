@@ -43,7 +43,7 @@ void screen(int8_t temperature, int8_t humidity, float height, int8_t wind_speed
     if (temperature > 5) {
     display.println("Temperature above 0!");
     }
-    if (wind > 8) {
+    if (wind_speed > 2) {
       display.println("Strong winds!");
     }
     if (height > 60) {
