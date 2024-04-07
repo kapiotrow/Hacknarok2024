@@ -36,11 +36,22 @@ void screen(int8_t temperature, int8_t humidity, float height, int8_t wind_speed
   display.print(humidity);
   display.println("%");
 
-  if (!alarm){
-    display.println("Good weather");
+  if (alarm){
+    display.println("THE SNOW IS COMING");
   }
   else {
-    display.println("THE SNOW IS COMING");
+    if (temperature > 5) {
+    display.println("Temperature above 0!");
+    }
+    if (wind > 8) {
+      display.println("Strong winds!");
+    }
+    if (height > 60) {
+      display.println("Thick snow cover!");
+    }
+    else {
+      display.println("The weather is good");
+    }
   }
 
   display.display();
